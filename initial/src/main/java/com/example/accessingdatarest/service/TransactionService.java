@@ -47,6 +47,15 @@ public class TransactionService {
 
 	private static final Logger logger = LoggerFactory.getLogger(TransactionService.class);
 
+	/**
+	 *
+	 * @param customerId
+	 * @param txnAmount
+	 * @return
+	 * @throws ResourceNotFoundException
+	 * @throws MethodArgumentNotValidException
+	 */
+
 	public RewardsTxn createAtransaction(Integer customerId, int txnAmount) throws
 			ResourceNotFoundException,
 			MethodArgumentNotValidException {
@@ -126,6 +135,13 @@ public class TransactionService {
 		}
 	}
 
+	/**
+	 *
+	 * @param customerId
+	 * @param numOfMonths
+	 * @return
+	 * @throws ResourceNotFoundException
+	 */
 	public RewardsResponse getRewards(Integer customerId, Integer numOfMonths) throws
 			ResourceNotFoundException {
 

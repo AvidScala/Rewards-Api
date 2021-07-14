@@ -44,6 +44,12 @@ public class RewardsController {
 
     private static final Logger logger = LoggerFactory.getLogger(RewardsController.class);
 
+    /**
+     *
+     * @param customer
+     * @return
+     */
+
     @PostMapping(path = "/customer", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> createCustomer(@Valid @RequestBody Customer customer)
      {
@@ -53,7 +59,11 @@ public class RewardsController {
 
     }
 
-
+    /**
+     *
+     * @param rewardsTxn
+     * @return
+     */
     // For inserting into the Transaction DB
     @PostMapping(path = "/transaction" , consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> createTransaction(@Valid @RequestBody RewardsTxn rewardsTxn){
@@ -68,6 +78,11 @@ public class RewardsController {
             }
     }
 
+    /**
+     *
+     * @return
+     * @throws ResourceNotFoundException
+     */
     //Getting all the customers in the DB
     @GetMapping("/customers")
     public ResponseEntity<?> allCustomers() throws ResourceNotFoundException {
@@ -78,6 +93,11 @@ public class RewardsController {
         return new ResponseEntity<>("No customers in the DB ", HttpStatus.NOT_FOUND);
     }
 
+    /**
+     *
+     * @param phoneNumber
+     * @return
+     */
     //Getting the customers using the phone number
     @GetMapping(path = "/customers/phoneNumber/{phoneNumber}")
     public ResponseEntity<?> findCustomer(@PathVariable Long phoneNumber)
@@ -88,6 +108,11 @@ public class RewardsController {
         return new ResponseEntity<> (cust, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param customerId
+     * @return
+     */
     @GetMapping(path = "/customers/Id/{customerId}")
     public ResponseEntity<?> findCustomerById(@PathVariable Integer customerId)
     {
@@ -96,6 +121,12 @@ public class RewardsController {
         return new ResponseEntity<> (cust, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param customerId
+     * @param numOfMonths
+     * @return
+     */
     //Getting the reward Points
     @GetMapping(path = "/rewardPoints/{customerId}/")
     public ResponseEntity<?> getRewards(@PathVariable Integer customerId,

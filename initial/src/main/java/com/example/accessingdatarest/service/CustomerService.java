@@ -22,11 +22,21 @@ public class CustomerService {
 	@Autowired
 	CustomerDao customerDao;
 
+	/**
+	 *
+	 * @return customers
+	 */
 	public List<Customer> getCustomers(){
 		List<Customer> customers = customerDao.findAll();
 		return customers;
 	}
 
+	/**
+	 *
+	 * @param phoneNumber
+	 * @return
+	 * @throws ResourceNotFoundException
+	 */
 	public Optional<Customer> getCustomerByPhoneNumber(Long phoneNumber) throws ResourceNotFoundException{
 
 		Optional<Customer> customer = Optional.ofNullable(customerDao.findByPhoneNumber(phoneNumber).orElseThrow(
